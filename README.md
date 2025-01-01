@@ -68,10 +68,6 @@ FeastFlow is a modern, full-stack food delivery platform that transforms the way
 ### Installation
 
 1. Clone both repositories:
-   ```bash
-   git clone https://github.com/yourusername/feastflow-frontend.git
-   git clone https://github.com/yourusername/feastflow-backend.git
-   ```
 
 2. Install frontend dependencies:
    ```bash
@@ -156,8 +152,7 @@ src/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 ## Acknowledgments
 - React Team for the amazing frontend library
@@ -165,5 +160,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - MongoDB team for the flexible database
 - All contributors who help make FeastFlow better
 
-## Support
-For support, email support@feastflow.com or join our Slack channel.
+
