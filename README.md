@@ -1,66 +1,61 @@
-# Food Delivery Application
+# FeastFlow
 
-A modern, full-stack food delivery application built with TypeScript, React, Node.js, and Express.
+FeastFlow is a modern, full-stack food delivery platform that transforms the way people order and enjoy food. Built with TypeScript, React, Node.js, and Express, it offers a seamless experience for customers, restaurants, and delivery partners.
 
 ## Features
 
-### User Features
-- **User Authentication**: 
-  - Email/Password registration and login
+### For Customers
+- **Smart Authentication**
+  - Email/Password login with secure validation
   - Google OAuth integration
-  - JWT-based authentication
-  - Password hashing and security
-- **Menu Management**:
-  - Browse restaurant menus
-  - Filter items by category
-  - Search functionality
-- **Shopping Cart**:
-  - Add/remove items
-  - Update quantities
-  - Cart persistence
-- **Order Management**:
-  - Place orders
-  - Track order status
-  - View order history
-- **User Profile**:
-  - Update personal information
-  - View order history
-  - Manage delivery addresses
+  - JWT-based session management
+- **Intuitive Food Discovery**
+  - Browse restaurant menus with rich visuals
+  - Smart filters for dietary preferences
+  - Real-time search with instant results
+- **Seamless Ordering**
+  - Interactive cart management
+  - Multiple payment options
+  - Order tracking in real-time
+- **Personalization**
+  - Save favorite restaurants and dishes
+  - Customizable meal preferences
+  - Order history and reordering
 
-### Admin Features
-- **User Management**:
-  - View all users
-  - Manage user roles
-  - Delete users
-- **Menu Management**:
-  - Add/edit/delete menu items
-  - Manage categories
-  - Upload item images
-- **Order Management**:
-  - View all orders
-  - Update order status
-  - Generate order reports
+### For Restaurants
+- **Menu Management**
+  - Easy menu item creation and updates
+  - Image upload and management
+  - Category organization
+- **Order Processing**
+  - Real-time order notifications
+  - Order status management
+  - Kitchen display system
+- **Analytics Dashboard**
+  - Sales and performance metrics
+  - Customer insights
+  - Inventory tracking
 
 ## Tech Stack
 
-### Frontend
-- **Framework**: React with TypeScript
+### Frontend (React Application)
+- **Core**: React 18 with TypeScript
 - **State Management**: Redux Toolkit
 - **Routing**: React Router v6
 - **Styling**: Tailwind CSS
 - **Form Handling**: React Hook Form
 - **Validation**: Zod
 - **HTTP Client**: Axios
-- **UI Components**: Custom components with Tailwind
+- **Authentication**: JWT, Google OAuth
 
-### Backend
+### Backend (Node.js Server)
 - **Runtime**: Node.js
 - **Framework**: Express.js with TypeScript
 - **Database**: MongoDB with Mongoose
-- **Authentication**: JWT, bcrypt, Google OAuth
+- **Authentication**: JWT, bcrypt
 - **Validation**: Joi
 - **File Upload**: Multer
-- **CORS**: Express CORS middleware
+- **API Security**: Helmet, CORS
 
 ## Getting Started
 
@@ -68,29 +63,35 @@ A modern, full-stack food delivery application built with TypeScript, React, Nod
 - Node.js (v14 or higher)
 - MongoDB
 - npm or yarn
-- Google OAuth credentials (for Google Sign-In)
+- Google OAuth credentials (for social login)
 
 ### Installation
 
-1. Clone the repository:
+1. Clone both repositories:
    ```bash
-   git clone https://github.com/yourusername/food-delivery-app.git
-   cd food-delivery-app
+   git clone https://github.com/yourusername/feastflow-frontend.git
+   git clone https://github.com/yourusername/feastflow-backend.git
    ```
 
-2. Install backend dependencies:
+2. Install frontend dependencies:
    ```bash
-   cd server-food
+   cd feastflow-frontend
    npm install
    ```
 
-3. Install frontend dependencies:
+3. Install backend dependencies:
    ```bash
-   cd ../food
+   cd feastflow-backend
    npm install
    ```
 
 4. Set up environment variables:
+
+   Frontend (.env):
+   ```env
+   VITE_APP_API_URL=http://localhost:5000
+   VITE_APP_GOOGLE_CLIENT_ID=your_google_client_id
+   ```
 
    Backend (.env):
    ```env
@@ -100,35 +101,31 @@ A modern, full-stack food delivery application built with TypeScript, React, Nod
    GOOGLE_CLIENT_ID=your_google_client_id
    ```
 
-   Frontend (.env):
-   ```env
-   VITE_APP_API_URL=http://localhost:5000
-   VITE_APP_GOOGLE_CLIENT_ID=your_google_client_id
-   ```
+5. Start the development servers:
 
-5. Start the backend server:
+   Frontend:
    ```bash
-   cd server-food
+   cd feastflow-frontend
    npm run dev
    ```
 
-6. Start the frontend development server:
+   Backend:
    ```bash
-   cd food
+   cd feastflow-backend
    npm run dev
    ```
 
-## Project Structure
+## Application Structure
 
 ### Frontend Structure
 ```
 src/
 ├── Auth/           # Authentication components
 ├── components/     # Reusable UI components
-├── Redux/          # Redux store, slices, and thunks
+├── Redux/          # Redux store and slices
 ├── types/          # TypeScript interfaces
 ├── utils/          # Utility functions
-└── App.tsx         # Main application component
+└── App.tsx         # Main application
 ```
 
 ### Backend Structure
@@ -138,38 +135,21 @@ src/
 ├── controllers/    # Route controllers
 ├── router/         # Express routes
 ├── services/       # Business logic
-├── validate/       # Request validation schemas
-└── app.ts          # Express application setup
+├── validate/       # Validation schemas
+└── app.ts          # Express setup
 ```
 
-## API Documentation
-
-### Authentication Endpoints
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/me` - Get current user
-- `POST /api/auth/google` - Google OAuth login
-
-### Menu Endpoints
-- `GET /api/menu` - Get all menu items
-- `POST /api/menu` - Add new menu item (admin)
-- `PUT /api/menu/:id` - Update menu item (admin)
-- `DELETE /api/menu/:id` - Delete menu item (admin)
-
-### Cart Endpoints
-- `GET /api/cart/:userId` - Get user's cart
-- `POST /api/cart/add` - Add item to cart
-- `PUT /api/cart/updateQuantity/:userId/:itemId` - Update item quantity
-- `DELETE /api/cart/delete/:userId/:itemId` - Remove item from cart
-
-### Order Endpoints
-- `GET /api/orders` - Get user's orders
-- `POST /api/orders` - Create new order
-- `PUT /api/orders/:id` - Update order status (admin)
-- `DELETE /api/orders/:id` - Delete order (admin)
+## Security Features
+- Password hashing with bcrypt
+- JWT-based authentication
+- Google OAuth integration
+- Input validation and sanitization
+- Rate limiting
+- CORS protection
+- XSS prevention
+- Secure HTTP headers
 
 ## Contributing
-
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
@@ -177,5 +157,13 @@ src/
 5. Open a Pull Request
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+- React Team for the amazing frontend library
+- Node.js community for the robust backend runtime
+- MongoDB team for the flexible database
+- All contributors who help make FeastFlow better
+
+## Support
+For support, email support@feastflow.com or join our Slack channel.
